@@ -1,0 +1,21 @@
+<web-app>
+	<servlet>
+		<servlet-name>loginservlet</servlet-name>
+		<servlet-class>com.mitrais.rms.controller.LoginServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>userservlet</servlet-name>
+		<servlet-class>com.mitrais.rms.controller.UserServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>dashboardservlet</servlet-name>
+		<servlet-class>
+			com.mitrais.rms.controller.DashboardServlet
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>logoutservlet</servlet-name>
+		<servlet-class>com.mitrais.rms.controller.LogoutServlet
+		</servlet-class>
+	</servlet>
+</web-app>
