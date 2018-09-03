@@ -1,12 +1,12 @@
 <%@ page language="java" pageEncoding="UTF-8" session="true"%>
 <%@ taglib prefix="rms" uri="/WEB-INF/tags/link.tld"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!doctype html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>RMS</title>
+<title>Dashboard</title>
 <meta name="description" content="Index">
 <meta name="author" content="Mitrais">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
 </head>
-
 <body>
 	<div class="demo-layout-transparent mdl-layout mdl-js-layout">
 		<header class="mdl-layout__header mdl-layout__header--transparent">
@@ -34,62 +33,44 @@
 				<!-- Navigation -->
 				<nav class="mdl-navigation">
 					<a class="mdl-navigation__link" href="/rms-servlet-web/users/list">User</a>
-					<a class="mdl-navigation__link"
-								href="/rms-servlet-web/users/form">Register</a>
+					<a class="mdl-navigation__link" href="/rms-servlet-web/users/form">Register</a>
 					<c:choose>
 						<c:when test="${user != null}">
-						<a class="mdl-navigation__link" href="/rms-servlet-web/dashboard">Dashboard</a>
 							<a class="mdl-navigation__link" href="/rms-servlet-web/logout">Logout</a>
 						</c:when>
 						<c:otherwise>
 							<a class="mdl-navigation__link" href="/rms-servlet-web/login">Login</a>
+							<%
+								session.invalidate();
+							%>
 						</c:otherwise>
 					</c:choose>
 				</nav>
 			</div>
 		</header>
-		<div class="mdl-layout mdl-js-layout box-center mdl-card">
+		<div
+			class="mdl-layout mdl-js-layout box-center mdl-card mdl-shadow--6dp">
 			<main class="mdl-layout__content">
-			<div class="mdl-card__title mdl-color--primary mdl-color-text--white mdl-shadow--6dp">
-				<h2 class="mdl-card__title-text">User List</h2>
+			<div class="mdl-card__title mdl-color-text--blue">
+				<h1 class="mdl-typography--text-center">Welcome: 
+					${user.name}</h1>
 			</div>
-			<table
-				class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-				<thead>
-					<tr>
-						<th class="mdl-data-table__cell--non-numeric">User Name</th>
-						<th>Password</th>
-						<th>Name</th>
-						<th>Gender</th>
-						<th>Email</th>
-						<th>Type</th>
-						<th>Status</th>
-						<th>Address</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${users}" var="user">
-						<tr>
-							<td class="mdl-data-table__cell--non-numeric"><c:out value="${user.userName}" /></td>
-							<td><c:out value="${user.password}" /></td>
-							<td><c:out value="${user.name}" /></td>
-							<td><c:out value="${user.gender}" /></td>
-							<td><c:out value="${user.email}" /></td>
-							<td><c:out value="${user.type}" /></td>
-							<td><c:out value="${user.status}" /></td>
-							<td><c:out value="${user.address}" /></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			<div class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-				<a href="../"><button type="button"
-						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Back</button></a>
+			<div class="mdl-typography--text-center mdl-color-text--blue">
+				<c:if test="${message!=null}">
+					<p>${message}</p>
+				</c:if>
 			</div>
+
+
+			<div class="mdl-card__actions mdl-card--border">
+				<a href="/rms-servlet-web/users/edit"><button type="button"
+						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Edit</button></a>
+				<a href="/rms-servlet-web/users/delete"><button type="button"
+						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Delete User</button></a>
 			</div>
 			</main>
+		</div>
 	</div>
 
-	<script src="js/scripts.js"></script>
 </body>
 </html>
