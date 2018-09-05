@@ -30,6 +30,7 @@ public class UserDaoImplTest {
     private PreparedStatement stmt;
     @Mock
     private ResultSet rs;
+    
     private User u;
     
     @Before

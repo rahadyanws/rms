@@ -33,12 +33,13 @@
 				<!-- Navigation -->
 				<nav class="mdl-navigation">
 					<a class="mdl-navigation__link" href="/rms-servlet-web/users/list">User</a>
-					<a class="mdl-navigation__link" href="/rms-servlet-web/users/form">Register</a>
 					<c:choose>
 						<c:when test="${user != null}">
+							<a class="mdl-navigation__link" href="/rms-servlet-web/dashboard">Dashboard</a>
 							<a class="mdl-navigation__link" href="/rms-servlet-web/logout">Logout</a>
 						</c:when>
 						<c:otherwise>
+							<a class="mdl-navigation__link" href="/rms-servlet-web/users/form">Register</a>
 							<a class="mdl-navigation__link" href="/rms-servlet-web/login">Login</a>
 							<%
 								session.invalidate();
@@ -48,8 +49,7 @@
 				</nav>
 			</div>
 		</header>
-		<div
-			class="mdl-layout mdl-js-layout box-center mdl-card mdl-shadow--6dp">
+		<div class="mdl-layout mdl-js-layout box-center mdl-card mdl-shadow--6dp">
 			<main class="mdl-layout__content">
 			<div class="mdl-card__title mdl-color-text--blue">
 				<h1 class="mdl-typography--text-center">Welcome: 
@@ -67,6 +67,8 @@
 						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Edit</button></a>
 				<a href="/rms-servlet-web/users/delete"><button type="button"
 						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Delete User</button></a>
+				<a href="/rms-servlet-web/education/list"><button type="button"
+						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Education</button></a>
 			</div>
 			</main>
 		</div>

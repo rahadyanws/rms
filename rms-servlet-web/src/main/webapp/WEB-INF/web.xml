@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:web="http://xmlns.jcp.org/xml/ns/javaee"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-	<servlet>
-		<servlet-name>loginservlet</servlet-name>
-		<servlet-class>com.mitrais.rms.controller.LoginServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>userservlet</servlet-name>
-		<servlet-class>com.mitrais.rms.controller.UserServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>dashboardservlet</servlet-name>
-		<servlet-class>com.mitrais.rms.controller.DashboardServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>logoutservlet</servlet-name>
-		<servlet-class>com.mitrais.rms.controller.LogoutServlet</servlet-class>
-	</servlet>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <servlet>
+    <servlet-name>loginservlet</servlet-name>
+    <servlet-class>com.mitrais.rms.controller.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>userservlet</servlet-name>
+    <servlet-class>com.mitrais.rms.controller.UserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>dashboardservlet</servlet-name>
+    <servlet-class>com.mitrais.rms.controller.DashboardServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>educationservlet</servlet-name>
+    <servlet-class>com.mitrais.rms.controller.EducationServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>logoutservlet</servlet-name>
+    <servlet-class>com.mitrais.rms.controller.LogoutServlet</servlet-class>
+  </servlet>
 </web-app>

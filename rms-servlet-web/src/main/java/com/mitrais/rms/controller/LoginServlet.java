@@ -12,7 +12,6 @@ import com.mitrais.rms.dao.impl.UserDaoImpl;
 import com.mitrais.rms.model.User;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Optional;
 
 @WebServlet("/login")

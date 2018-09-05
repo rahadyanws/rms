@@ -51,44 +51,47 @@
 		</header>
 		<div class="mdl-layout mdl-js-layout box-center mdl-card">
 			<main class="mdl-layout__content">
-			<div
-				class="mdl-card__title mdl-color--primary mdl-color-text--white mdl-shadow--6dp">
-				<h2 class="mdl-card__title-text">User List</h2>
+			<div class="mdl-typography--text-center mdl-color-text--blue">
+				<c:if test="${message!=null}">
+					<p>${message}</p>
+				</c:if>
+			</div>
+			<div class="mdl-card__title mdl-color--primary mdl-color-text--white mdl-shadow--6dp">
+				<h2 class="mdl-card__title-text">Education List</h2>
 			</div>
 			<table
 				class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
 				<thead>
 					<tr>
-						<th class="mdl-data-table__cell--non-numeric">User Name</th>
-						<th>Password</th>
-						<th>Name</th>
-						<th>Gender</th>
-						<th>Email</th>
-						<th>Type</th>
-						<th>Status</th>
-						<th>Address</th>
+						<th class="mdl-data-table__cell--non-numeric">Period</th>
+						<th>Qualification</th>
+						<th>School/Collage</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${users}" var="user">
+					<c:forEach items="${ educations }" var="education">
 						<tr>
-							<td class="mdl-data-table__cell--non-numeric"><c:out
-									value="${user.userName}" /></td>
-							<td><c:out value="${user.password}" /></td>
-							<td><c:out value="${user.name}" /></td>
-							<td><c:out value="${user.gender}" /></td>
-							<td><c:out value="${user.email}" /></td>
-							<td><c:out value="${user.type}" /></td>
-							<td><c:out value="${user.status}" /></td>
-							<td><c:out value="${user.address}" /></td>
+							<td class="mdl-data-table__cell--non-numeric">${ education.period }</td>
+							<td>${ education.qualification }</td>
+							<td>${ education.school }</td>
+							<td>
+								<a href="/rms-servlet-web/education/delete?educationId=${ education.educationId }"><button type="button"
+									class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Delete</button></a>
+								<a href="/rms-servlet-web/education/edit?educationId=${ education.educationId }"><button type="button"
+									class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Edit</button></a>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 			<div
 				class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-				<a href="../"><button type="button"
+				<a href="../dashboard"><button type="button"
 						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Back</button></a>
+				<a href="/rms-servlet-web/education/form"><button type="button"
+						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Add
+						Education</button></a>
 			</div>
 		</div>
 		</main>

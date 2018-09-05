@@ -33,95 +33,110 @@
 				<div class="mdl-layout-spacer"></div>
 				<!-- Navigation -->
 				<nav class="mdl-navigation">
-					<a class="mdl-navigation__link" href="/rms-servlet-web/users/list">User</a>
-					<a class="mdl-navigation__link" href="/rms-servlet-web/users/form">Register</a>
+					<a class="mdl-navigation__link" href="/rms-servlet-web/users/list">User</a>					
 					<c:choose>
 						<c:when test="${user != null}">
 							<a class="mdl-navigation__link" href="/rms-servlet-web/dashboard">Dashboard</a>
 							<a class="mdl-navigation__link" href="/rms-servlet-web/logout">Logout</a>
 						</c:when>
 						<c:otherwise>
+							<a class="mdl-navigation__link" href="/rms-servlet-web/users/form">Register</a>
 							<a class="mdl-navigation__link" href="/rms-servlet-web/login">Login</a>
-							<%
-								session.invalidate();
-							%>
 						</c:otherwise>
 					</c:choose>
-
-
 				</nav>
 			</div>
 		</header>
 		<div class="mdl-layout mdl-js-layout box-center mdl-card">
+
+
 			<main class="mdl-layout__content">
 			<div class="mdl-card mdl-shadow--6dp">
-				<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-					<h2 class="mdl-card__title-text">Registration</h2>
+				<div
+					class="mdl-card__title mdl-color--primary mdl-color-text--white">
+					<h2 class="mdl-card__title-text">Edit User: ${user.name}</h2>
 				</div>
 				<div class="mdl-card__supporting-text">
-					<form action="form" method="post" id="form_reg">
-						<c:if test="${message!=null}">
-							<div class="mdl-textfield mdl-js-textfield">
-								<label>${message}</label>
-							</div>
-						</c:if>
-						<div class="mdl-textfield mdl-js-textfield">
-							<input class="mdl-textfield__input" type="text" id="username"
-								name="username" required="required" /> <label
-								class="mdl-textfield__label" for="username">Username</label>
-						</div>
-						<div class="mdl-textfield mdl-js-textfield">
-							<input class="mdl-textfield__input" type="password" id="userpass"
-								name="userpass" required="required" /> <label
-								class="mdl-textfield__label" for="userpass">Password</label>
-						</div>
-						<div class="mdl-textfield mdl-js-textfield">
-							<input class="mdl-textfield__input" type="password"
-								id="conf-userpass" name="conf-userpass" required="required" /> <label
-								class="mdl-textfield__label" for="conf-userpass">Confirm
-								Password</label>
-						</div>
+					<form action="edit" method="post" id="form_edit">
 						<div class="mdl-textfield mdl-js-textfield">
 							<input class="mdl-textfield__input" type="text" id="name"
-								name="name" required="required" /> <label
+								name="name" value="${user.name}" /> <label
 								class="mdl-textfield__label" for="userpass">Name</label>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield">
 							<label for="gender">Gender: </label> <select id="gender"
 								name="gender">
-								<option value="Male">Male</option>
-								<option value="Female">Female</option>
+								<c:choose>
+									<c:when test="${user.gender=='Male'}">
+										<option selected="selected" value="Male">Male</option>
+										<option value="Female">Female</option>
+									</c:when>
+									<c:when test="${user.gender=='Female'}">
+										<option value="Male">Male</option>
+										<option selected="selected" value="Female">Female</option>
+									</c:when>
+									<c:otherwise>
+										<option value="Male">Male</option>
+										<option value="Female">Female</option>
+									</c:otherwise>
+								</c:choose>
 							</select>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield">
 							<input class="mdl-textfield__input" type="email" id="email"
-								name="email" /> <label class="mdl-textfield__label" for="email">Email</label>
+								name="email" value="${user.email}" /> <label
+								class="mdl-textfield__label" for="email">Email</label>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield">
-							<label for="type">Type: </label> <select id="type" name="type">
-								<option value="Reguler">Reguler</option>
-								<option value="Premium">Premium</option>
+							<label for="type">Type: </label> <select id="type"
+								name="type">
+								<c:choose>
+									<c:when test="${user.type=='Reguler'}">
+										<option selected="selected" value="Reguler">Reguler</option>
+										<option value="Premium">Premium</option>
+									</c:when>
+									<c:when test="${user.type=='Premium'}">
+										<option value="Reguler">Reguler</option>
+										<option selected="selected" value="Premium">Premium</option>
+									</c:when>
+									<c:otherwise>
+										<option value="Reguler">Reguler</option>
+										<option value="Premium">Premium</option>
+									</c:otherwise>
+								</c:choose>
 							</select>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield">
 							<label for="status">Status: </label> <select id="status"
 								name="status">
-								<option value="Active">Active</option>
-								<option value="Deactive">Deactive</option>
+								<c:choose>
+									<c:when test="${user.status=='Active'}">
+										<option selected="selected" value="Active">Active</option>
+										<option value="Deactive">Deactive</option>
+									</c:when>
+									<c:when test="${user.status=='Deactive'}">
+										<option value="Active">Active</option>
+										<option selected="selected" value="Deactive">Deactive</option>
+									</c:when>
+									<c:otherwise>
+										<option value="Active">Active</option>
+										<option value="Deactive">Deactive</option>
+									</c:otherwise>
+								</c:choose>
 							</select>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield">
 							<input class="mdl-textfield__input" type="text" id="address"
-								name="address" /> <label class="mdl-textfield__label"
-								for="address">Address</label>
+								name="address" value="${user.address}" /> <label
+								class="mdl-textfield__label" for="address">Address</label>
 						</div>
 					</form>
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
-					<button type="submit" form="form_reg"
+					<button type="submit" form="form_edit"
 						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Save</button>
-					<a href="../"><button type="button"
-							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Back</button></a>
+					<a href="../dashboard"><button type="button"
+							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Cancel</button></a>
 				</div>
 			</div>
 			</main>

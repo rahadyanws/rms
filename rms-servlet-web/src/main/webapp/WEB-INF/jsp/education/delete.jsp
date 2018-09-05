@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" session="true"%>
 <%@ taglib prefix="rms" uri="/WEB-INF/tags/link.tld"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -51,49 +51,37 @@
 		</header>
 		<div class="mdl-layout mdl-js-layout box-center mdl-card">
 			<main class="mdl-layout__content">
-			<div
-				class="mdl-card__title mdl-color--primary mdl-color-text--white mdl-shadow--6dp">
-				<h2 class="mdl-card__title-text">User List</h2>
+			<div class="mdl-card mdl-shadow--6dp">
+				<div
+					class="mdl-card__title mdl-color--primary mdl-color-text--white">
+					<h2 class="mdl-card__title-text">Are you sure to delete Education?</h2>
+				</div>
+				<div class="mdl-card__supporting-text">
+					<form action="delete" method="post" id="form_reg">
+						<c:if test="${message!=null}">
+							<div class="mdl-textfield mdl-js-textfield">
+								<label>${message}</label>
+							</div>
+						</c:if>
+						<input class="mdl-textfield__input" type="hidden" id="educationId"
+								name="educationId" required="required" value="${ educationId }" />
+						<div class="mdl-textfield mdl-js-textfield">
+							<input class="mdl-textfield__input" type="password" id="userpass"
+								name="userpass" required="required" /> <label
+								class="mdl-textfield__label" for="userpass">Password</label>
+						</div>
+					</form>
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+					<button type="submit" form="form_reg" 
+						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Yes</button>
+					<a href="/rms-servlet-web/dashboard"><button type="button"
+							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">No</button></a>
+				</div>
 			</div>
-			<table
-				class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-				<thead>
-					<tr>
-						<th class="mdl-data-table__cell--non-numeric">User Name</th>
-						<th>Password</th>
-						<th>Name</th>
-						<th>Gender</th>
-						<th>Email</th>
-						<th>Type</th>
-						<th>Status</th>
-						<th>Address</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${users}" var="user">
-						<tr>
-							<td class="mdl-data-table__cell--non-numeric"><c:out
-									value="${user.userName}" /></td>
-							<td><c:out value="${user.password}" /></td>
-							<td><c:out value="${user.name}" /></td>
-							<td><c:out value="${user.gender}" /></td>
-							<td><c:out value="${user.email}" /></td>
-							<td><c:out value="${user.type}" /></td>
-							<td><c:out value="${user.status}" /></td>
-							<td><c:out value="${user.address}" /></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			<div
-				class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-				<a href="../"><button type="button"
-						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Back</button></a>
-			</div>
+			</main>
 		</div>
-		</main>
 	</div>
-
 	<script src="js/scripts.js"></script>
 </body>
 </html>
