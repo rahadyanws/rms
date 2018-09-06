@@ -32,7 +32,7 @@ public class EducationServlet extends AbstractController {
 		EducationDao educationDao = EducationDaoImpl.getInstance();
 		if ("/list".equalsIgnoreCase(req.getPathInfo()) && session != null) {
 			List<Education> educations = educationDao.findByUserId(user.getId());
-			req.setAttribute("educations", educations);
+			req.setAttribute("educations", educations); 
 			requestDispatcher.forward(req, resp);
 		} else if ("/edit".equalsIgnoreCase(req.getPathInfo())) {
 			if (session == null || session.getAttribute("user") == null) {

@@ -25,6 +25,7 @@ public class EducationDaoImpl implements EducationDao {
 				Education education = new Education(rs.getLong("education_id"), rs.getLong("user_id"), rs.getString("period"), rs.getString("qualification"), rs.getString("school"));
 				return Optional.of(education);
 			}
+			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -41,6 +42,7 @@ public class EducationDaoImpl implements EducationDao {
 				Education education = new Education(rs.getLong("education_id"), rs.getLong("user_id"), rs.getString("period"), rs.getString("qualification"), rs.getString("school"));
 				result.add(education);
 			}
+			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -60,6 +62,7 @@ public class EducationDaoImpl implements EducationDao {
 			if (i == 1) {
 				return true;
 			}
+			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -78,6 +81,7 @@ public class EducationDaoImpl implements EducationDao {
 			if (i == 1) {
 				return true;
 			}
+			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -93,6 +97,7 @@ public class EducationDaoImpl implements EducationDao {
 			if (i == 1) {
 				return true;
 			}
+			connection.close();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
