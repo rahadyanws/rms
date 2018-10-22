@@ -28,6 +28,7 @@ public class UserDaoImpl implements UserDao {
 						rs.getString("name"), rs.getString("gender"), rs.getString("email"), rs.getString("type"), rs.getString("status"), rs.getString("address"));
 				return Optional.of(user);
 			}
+			connection.close();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
@@ -46,6 +47,7 @@ public class UserDaoImpl implements UserDao {
 						rs.getString("name"), rs.getString("gender"), rs.getString("email"), rs.getString("type"), rs.getString("status"), rs.getString("address"));
 				result.add(user);
 			}
+			connection.close();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
@@ -68,6 +70,7 @@ public class UserDaoImpl implements UserDao {
 			if (i == 1) {
 				return true;
 			}
+			connection.close();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
@@ -91,6 +94,7 @@ public class UserDaoImpl implements UserDao {
 			if (i == 1) {
 				return true;
 			}
+			connection.close();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
@@ -106,6 +110,7 @@ public class UserDaoImpl implements UserDao {
 			if (i == 1) {
 				return true;
 			}
+			connection.close();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
@@ -124,6 +129,7 @@ public class UserDaoImpl implements UserDao {
 						rs.getString("type"), rs.getString("status"),  rs.getString("address"));
 				return Optional.of(user);
 			}
+			connection.close();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
